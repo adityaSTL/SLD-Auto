@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-path=r"C:\Users\Aditya.gupta\Downloads\data.db"
+path=r"data.db"
 df_tnd,df_hdd,df_drt,df_dit,df_blow=gs.get_df(path)
 all_df=[df_tnd,df_hdd,df_drt,df_dit,df_blow]
 #df_info(all_df)
