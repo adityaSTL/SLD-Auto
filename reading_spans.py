@@ -25,21 +25,14 @@ class get_span:
                 print(all_df[i].info())
     ###########################################################################################################################
     def plot_span(y,df,spanid,method,color):
-        try:
-            xmin=df['Chainage_From'][1]
-            print("1")
+        if 1:
+            xmin=df['Chainage_From'][0]
+            #print("1")
             for i in range(len(df)):
                 if (df['Span_ID'][i]==spanid):
-                    plt.hlines(y,df['Chainage_From'][i],df['Chainage_To'][i],color=color, linewidth=7)
+                    plt.hlines(y,df['Chainage_From'][i],df['Chainage_To'][i],color=color,linewidth=7)
                     xmin=min(xmin,df['Chainage_From'][i])
             plt.text(xmin,y,method, ha='left', va='baseline',weight='bold')       
-        except:
-            xmin=df['ch_from'][1]
-            for i in range(len(df)):
-                if (df['Span_ID'][i]==spanid):
-                    plt.hlines(y,df['ch_from'][i],df['ch_to'][i],color=color, linewidth=7)
-                    xmin=min(xmin,df['ch_from'][i])
-            plt.text(xmin,y, method, ha='left', va='baseline',weight='bold')     
     ###########################################################################################################################
     def get_df(path):
         cnx = sqlite3.connect(path)
@@ -49,6 +42,5 @@ class get_span:
         df_dit = pd.read_sql_query("SELECT * FROM 'dit'", cnx)
         df_blow = pd.read_sql_query("SELECT * FROM 'blowing'", cnx)
         return df_tnd,df_hdd,df_drt,df_dit,df_blow
-    
+
     ###########################################################################################################################
-    
