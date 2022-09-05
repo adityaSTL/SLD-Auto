@@ -7,7 +7,11 @@ import seaborn as sns
 
 class get_span:
 
-
+    def spanify(all_df,spanid):
+        for i in range(len(all_df)):
+            all_df[i]=all_df[i].loc[all_df[i]['Span_ID']==spanid]
+            all_df[i].reset_index(inplace = True)
+        return all_df
     ###########################################################################################################################
     def check_span(spanid,all_df):
         df=0

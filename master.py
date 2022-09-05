@@ -2,9 +2,11 @@ import pandas as pd
 import numpy as np
 from reading_spans import get_span as gs
 
-def filler(df,name,start,end):
-    df[name]=df[0].between(start,end,inclusive="both")
-    return df
+def filler(master,df,mb):
+    master[mb]=False
+    for i in range(len(df)):
+        master[mb]=master[mb]+master[0].between(int(df['Chainage_From'][i]),int(df['Chainage_From'][i]),inclusive="both")
+    return master
 
 def spanify(all_df,spanid):
     for i in range(len(all_df)):
@@ -23,12 +25,15 @@ all_df=[df_tnd,df_hdd,df_drt,df_dit,df_blow]
 df_all_span=spanify(all_df,spanid)
 #print(df[2])
 
-for j in range(len(df_all_span)):
-    for i in range(len(df_all_span[j])):
-        master[j]=master[0].between(int(df_all_span[j]['Chainage_From'][i]),int(df_all_span[j]['Chainage_From'][i]))
-print(master)
 
-master.to_csv("master.csv")
+
+master=filler(master,df_all_span[0],"tnd")
+master=filler(master,df_all_span[1],"hdd")
+master=filler(master,df_all_span[2],"drt")
+master=filler(master,df_all_span[3],"dit")
+master=filler(master,df_all_span[4],"blow")
+
+master.to_csv("master1.csv")
 #print(df_hdd_span)
 print(master.info())
 
