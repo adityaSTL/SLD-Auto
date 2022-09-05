@@ -13,7 +13,7 @@ spanid="ADL-SIU-4677-M-01-GR02-02"
 df=gm.get_master(path,spanid)
 (df_summ,all_stats)=summary.get_stats(df)
 
-plot.get_plot(df_summ)
+plot.get_plot(spanid,df_summ)
 plt.title(spanid)
 df_summ.to_csv("final.csv")
 #z=(df_summ.loc[df['blow']==True,['Chainage']])
