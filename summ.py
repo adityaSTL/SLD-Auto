@@ -65,5 +65,6 @@ class summary:
 
         all_stats=[chainage_start,chainage_end,span_len,blo_len,duct_dam_len,duct_miss_len,dit_len,hdd_len,ot_len]
         df=df.loc[(df['Chainage']>=start) & (df['Chainage']<=end)]
+        df.reset_index(inplace = True)
         #print(df.info())
         return (df,all_stats)
