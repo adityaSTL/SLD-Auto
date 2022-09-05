@@ -8,7 +8,7 @@ from summ import summary
 from graph import plot
 
 path=r'data.db'
-spanid="ADL-SIU-4677-M-01-GR02-02"
+spanid="ADL-GUD-4647-M-01-GR01-09"
 
 df=gm.get_master(path,spanid)
 (df_summ,all_stats)=summary.get_stats(df)
