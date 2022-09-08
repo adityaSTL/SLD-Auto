@@ -76,6 +76,16 @@ class Master:
 
         #print(master.info())
         master.rename(columns = {0:'Chainage'}, inplace = True)
+        master['duct_overlap']=False
+        for i in range(len(master)):
+            if master['drt_duct_dam'][i]*master['dit_duct_miss'][i]==True:
+                master['duct_overlap'][i]=True
+
+        master['tnd_overlap']=False
+        for i in range(len(master)):
+            if master['hdd'][i]*master['tnd_ot'][i]==True:
+                master['tnd_overlap'][i]=True
+
         return master
 
 

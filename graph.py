@@ -20,6 +20,11 @@ class plot:
         plt.plot(z['Chainage'],[2]*len(z),'o',color='green',label="OT",alpha=0.7,markersize=3.5)
         plt.plot(y['Chainage'],[2]*len(y),'|',color='green',markersize=20,alpha=0.3)
 
+        z=df.loc[df['tnd_overlap']==True,['Chainage']]
+        #y=df.loc[df['tnd_ot_marker']==True,['Chainage']]
+        plt.plot(z['Chainage'],[2]*len(z),'o',color='red',label="tnd overlap",markersize=3)
+        #plt.plot(y['Chainage'],[2]*len(y),'|',color='green',markersize=20,alpha=0.3)
+
         z=df.loc[df['drt']==True,['Chainage']]
         y=df.loc[df['drt_marker']==True,['Chainage']]
         plt.plot(z['Chainage'],[2]*len(z),'o',color='blue',label="DRT",alpha=0.3,markersize=5)
@@ -30,10 +35,18 @@ class plot:
         plt.plot(z['Chainage'],[3]*len(z),'o',color='brown',label="Duct_Dam",alpha=0.4,markersize=5)
         plt.plot(y['Chainage'],[3]*len(y),'|',color='brown',markersize=20,alpha=0.3)
 
+
         z=df.loc[df['dit_duct_miss']==True,['Chainage']]
         y=df.loc[df['dit_duct_miss_marker']==True,['Chainage']]
         plt.plot(z['Chainage'],[3]*len(z),'o',color='black',label="Duct_Miss",alpha=1,markersize=3)
         plt.plot(y['Chainage'],[3]*len(y),'|',color='black',markersize=15,alpha=0.3)
+
+        z=df.loc[df['duct_overlap']==True,['Chainage']]
+        #y=df.loc[df['drt_duct_dam_marker']==True,['Chainage']]
+        plt.plot(z['Chainage'],[3]*len(z),'o',color='red',label="Duct overlap",markersize=4)
+        #plt.plot(y['Chainage'],[3]*len(y),'|',color='brown',markersize=20,alpha=0.3)
+
+
 
         z=df.loc[df['dit']==True,['Chainage']]
         y=df.loc[df['dit_marker']==True,['Chainage']]
